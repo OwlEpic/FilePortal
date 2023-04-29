@@ -1,0 +1,71 @@
+
+.app{
+    display: flex;
+    justify-content: center;
+    .container{
+        width: 1024px;
+        
+        // HOME PAGE
+
+        .home{
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 150;
+            background-color: red;
+            
+            h1{
+                display: flex;
+                justify-content: center; 
+            }
+
+            p{
+                display: flex;
+                justify-content: center; 
+            }
+
+            .laptop{
+                display: flex;
+                justify-content: center;
+                button{
+                    margin-top: 10px;
+                    width: 175px;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    background-color: white;
+                    border: 1px solid teal;
+                    color: teal;
+
+                    &:hover{
+                        border: 1px solid white;
+                        background-color: green;
+                        color: black;
+                    }
+                }
+            }
+
+            .telephone{
+                display: flex;
+                justify-content: center;
+                button{
+                    
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    width: 175px;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    background-color: white;
+                    border: 1px solid teal;
+                    color: teal;
+
+                    &:hover{
+                        border: 1px solid white;
+                        background-color: green;
+                        color: black;
+                    }
+                }
+            }
+        }
+
+    }
+}
