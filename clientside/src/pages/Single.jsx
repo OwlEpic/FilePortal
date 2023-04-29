@@ -9,24 +9,7 @@ import { FileUploader } from "react-drag-drop-files";
 
 
 const Single = () => {
-  // const NetcatClient = require('netcat/client')
-  // const nc2 = new NetcatClient()
-  // nc2.addr('35.183.178.249').port(7415).connect()
-
-  // client.on('data', (data) => {
-  //   console.log("GOT DATA %s", data.toString())
-  // })
-
-  var na = require('node:net');
-  var serverAddress = {
-    host: '35.183.178.249',
-    port: 7415
-  };
-  var client = na.connect({ port: 7415, host:'35.183.178.249' }, () => {
-    console.log("conected")
-  })
   
-
   const fileTypes = ["JPG", "PNG", "GIF"];
 
   const [file, setFile] = useState(null);
