@@ -84,55 +84,55 @@
         animation: blink 2s linear infinite;
       }
 
-&::before {
-  transform: rotate(45deg);
-}
+      &::before {
+        transform: rotate(45deg);
+      }
 
-&::after {
-  transform: rotate(-45deg);
-}
-}
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
 
-@keyframes fall {
-to {
-  transform: translate3d(-30em, 0, 0);
-}
-}
+    @keyframes fall {
+      to {
+        transform: translate3d(-30em, 0, 0);
+      }
+    }
 
-@keyframes tail-fade {
-0%, 50% {
-  width: var(--star-tail-length);
-  z-index: -100;
-  opacity: 1;
-}
+    @keyframes tail-fade {
+      0%, 50% {
+        width: var(--star-tail-length);
+        z-index: -100;
+        opacity: 1;
+      }
 
-70%, 80% {
-  width: 0;
-  z-index: -100;
-  opacity: 0.4;
-}
+      70%, 80% {
+        width: 0;
+        z-index: -100;
+        opacity: 0.4;
+      }
 
-100% {
-  width: 0;
-  z-index: -100;
-  opacity: 0;
-}
-}
+      100% {
+        width: 0;
+        z-index: -100;
+        opacity: 0;
+      }
+    }   
 
-@keyframes blink {
-50% {
-  opacity: 0.6;
-  z-index: -100;
-}
-}
+    @keyframes blink {
+      50% {
+        opacity: 0.6;
+        z-index: -100;
+      }
+    }
 
-    .container{
-        width: 1024px;
+  .container{
+    margin-right: auto;
+    width: 100%;
         
         // HOME PAGE
-
         .home{
-            margin-top: 50px;
+            margin-top: 50px;           
             height:max-content;
             display: flex;
             flex-direction: column;
@@ -153,18 +153,25 @@ to {
                 display: flex;
                 justify-content: center;
                 button{
-                    margin-top: 10px;
+                    margin-top: 25px;
                     width: 175px;
                     padding: 10px 20px;
                     cursor: pointer;
                     background-color: white;
                     border: 1px solid teal;
                     color: teal;
+                    padding: 1rem;
+                    font-size: 1rem;
+                    border-radius: 0.25rem;
+                    transition: all 0.3s ease-out; 
+                    box-shadow: none;
 
                     &:hover{
                         border: 1px solid white;
-                        background-color: green;
+                        background-color: lightblue;
                         color: black;
+                        transform: scale(1.1); 
+                        box-shadow: 0 0 10px #0057a8, 0 0 20px #0057a8, 0 0 30px #0057a8;
                     }
                 }
             }
@@ -172,28 +179,33 @@ to {
             .telephone{
                 display: flex;
                 justify-content: center;
-                button{
-                    
-                    margin-top: 10px;
-                    margin-bottom: 10px;
+                button{  
+                    margin-top: 20px;
                     width: 175px;
                     padding: 10px 20px;
                     cursor: pointer;
                     background-color: white;
                     border: 1px solid teal;
                     color: teal;
+                    padding: 1rem;
+                    font-size: 1rem;
+                    border-radius: 0.25rem;
+                    transition: all 0.3s ease-out;
+                    box-shadow: none; 
 
                     &:hover{
                         border: 1px solid white;
-                        background-color: green;
+                        background-color: lightblue;
                         color: black;
+                        transform: scale(1.1); 
+                        box-shadow: 0 0 10px #0057a8, 0 0 20px #0057a8, 0 0 30px #0057a8;
                     }
                 }
             }
         }
         
-        margin-right: auto;
-        width: 100%;
+        // HEADER 
+
         .header{
             height: 40px;
             display: flex;
@@ -205,7 +217,55 @@ to {
                 margin-top: 10px;  
                 height: 100px;
                 width: 250px;
+                cursor: pointer;
+                border-radius: 0.25rem;
+                transition: all 0.3s ease-out;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
             }
+        }
+
+        // TRANSFER/SINGLE PAGE 
+
+        .single{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            h1{
+                display: flex;
+                justify-content: center;
+                color:white;
+            }
+
+            .displayCode{
+                display: flex;
+                flex-direction: column;
+                input{
+                    
+                }
+
+                button{
+                    display: none;
+                }
+            }
+
+            .fileDrop{
+                
+
+                h1{
+                
+                  width: 200px;
+                  height: 100px;
+                  background-color: red;
+                  border: 2px solid black;
+                  
+                }
+            }
+            
         }
 
     }

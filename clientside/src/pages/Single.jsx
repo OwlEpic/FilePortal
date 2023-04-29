@@ -26,12 +26,18 @@ const Single = () => {
   }
 
   return (
-    <div>
+    <div className='single'>
       <h1> sample </h1>
-      <input onChange={e=>setInput(e.target.value)} placeholder="waiting on code..." />
-      <button onClick={handleChange}> refresh </button>
-      <span>code is {codes.code}</span>
-      <FileUploader handleChange={handleChangeFile} name="file" types={fileTypes} />
+      <div className="displayCode">
+        <input onChange={e=>setInput(e.target.value)} placeholder="waiting on code..." />
+        <button onClick={handleChange}> refresh </button>
+        <span>code is {codes.code}</span>
+      </div>
+      <FileUploader className="fileDrop" handleChange={handleChangeFile} name="file" types={fileTypes}>
+        <h1>
+          hi
+        </h1>
+      </FileUploader>
     </div>
   )
 }
