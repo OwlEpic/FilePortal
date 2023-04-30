@@ -67,9 +67,14 @@ const Single = () => {
   }
 
   const [buttonText, setButtonText] = useState('Click me');
+  const [col, setCol] = useState("white")
 
   const handleClick = () => {
     setButtonText('Button clicked!');
+    if(col=="white"){
+      setCol("orange")
+    }
+    console.log(col)
     setTimeout(() => setButtonText('Click me'), 1500);
   }
 
@@ -85,8 +90,8 @@ const Single = () => {
           </button>
           <div className="filedrop">
               <FileUploader handleChange={handleChangeFile} name="file" types={fileTypes}>
-              <div class="portal-frame">
-                <div class="portal"></div>
+              <div class="portal-frame" style={{color: col }}>
+                <div class="portal" style={{background: col }}></div>
               </div>
               </FileUploader>
           </div>
