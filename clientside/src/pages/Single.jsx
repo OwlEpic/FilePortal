@@ -4,7 +4,7 @@ import { connect, sendData } from '../Sockt.js';
 
 const Single = () => {
   
-  const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
+  const fileTypes = ["JPG", "PNG", "ZIP", "PDF", "PNG", "JSON"];
 
   var chunk = 0;
   const reader = new FileReader()
