@@ -9,7 +9,7 @@ const Single = () => {
   var chunk = 0;
   const reader = new FileReader()
   var start = 0;
-  const chunkSize = 1000000;
+  const chunkSize = 65536;
 
   
   

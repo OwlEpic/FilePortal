@@ -43,7 +43,7 @@ export function connect (cod, type) {
             curType = 'application/' + tempType
         }
     }
-    else if(e.data.size === 1000000) {
+    else if(e.data.size === 65536) {
         curBlob = new Blob([curBlob, e.data], {type: curType})
     } else {
         curBlob = new Blob([curBlob, e.data], {type: curType})
