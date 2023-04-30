@@ -74,7 +74,7 @@ const Single = () => {
       setCol("orange")
     }
     console.log(col)
-    setTimeout(() => setButtonText('Click me'), 1500);
+    setTimeout(() => setButtonText('Click me'), 2000);
     if(val) {
       connect(val, 1)
     } else {
