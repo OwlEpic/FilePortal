@@ -322,7 +322,7 @@
               
                 @keyframes portal-spin { 0% { transform: rotate(359deg); } }
                 .portal-frame {
-                  --portal-color: orange;
+                  //--portal-color: orange;
                   width: 300px;
                   aspect-ratio: 1;
                   --portal-browserbugfix: perspective(2077px) translateZ(-0.1px);
@@ -344,9 +344,10 @@
                 .portal::before {
                   content: "";
                   animation-direction: reverse;
-                  background: linear-gradient(
-                    black -25%, transparent 50%, white 125%
-                  ), var(--portal-color);
+                  //background: orange;
+                  // linear-gradient(
+                  //   black -25%, transparent 50%, white 125%
+                  // ), var(--portal-color);
                 }
                 
                 /* data uri for the portal image, nothing else below */
