@@ -9,7 +9,7 @@ var name = ""
 export function connect (cod, type) {
     code = cod
     ty = type 
-    client = new W3CWebSocket("ws://35.182.117.165:7415",)
+    client = new W3CWebSocket("wss://35.182.117.165:7415",)
 
    
 
@@ -24,6 +24,7 @@ export function connect (cod, type) {
       } else if (ty === 0) {
           sendData("CODE" + code)
       }
+      document.getElementById("inpt").defaultValue = code;
     console.log('WebSocket Client Connected')
   }
 

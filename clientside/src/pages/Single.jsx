@@ -3,11 +3,9 @@ import { FileUploader } from "react-drag-drop-files";
 import { connect, sendData } from '../Sockt.js';
 
 const Single = () => {
-  var [client, setClient] = useState();
   
   const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
 
-  var fa;
   var chunk = 0;
   const reader = new FileReader()
   var start = 0;
@@ -46,7 +44,6 @@ const Single = () => {
     
   }
 
-  const textAreaRef = useRef(null);
 
   const [input, setInput] = useState("")
 
@@ -62,26 +59,27 @@ const Single = () => {
 
 
   const inputRef = useRef();
-  const [updated, setUpdated] = useState("");
   const [buttonText, setButtonText] = useState('Click me');
   const [col, setCol] = useState("white")
 
   const handleClick = () => {
-    var val = inputRef.current.value
+    if(col === "white") {
+      var val = inputRef.current.value
     
-    setButtonText('Button clicked!');
-    if(col=="white"){
-      setCol("orange")
+      setButtonText('Button clicked!');
+      console.log(col)
+      setTimeout(() => setButtonText('Click On Portal!'), 1500);
+      if(val) {
+        connect(val, 1)
+        setCol("orange")
+      } else {
+        setCol("blue")
+        console.log("trying to connect")
+        const cod = Math.floor(100000 + Math.random() * 900000);
+        connect(cod, 0);
+      }
     }
-    console.log(col)
-    setTimeout(() => setButtonText('Click me'), 1500);
-    if(val) {
-      connect(val, 1)
-    } else {
-      console.log("trying to connect")
-      const cod = Math.floor(100000 + Math.random() * 900000);
-      connect(cod, 0);
-    }
+    
   }
 
   return (
@@ -89,7 +87,7 @@ const Single = () => {
       <div className="cont">
         <div className="wrap">
           <p>Copy and send your code to the person you want to share with!</p>
-          <input id="inpt" ref={inputRef} placeholder="waiting on code"  />
+          <input id="inpt" ref={inputRef} placeholder="Join Code"  maxLength="6"  />
           <button className="button" onClick={handleClick}>
             {buttonText}
           </button>
