@@ -12,11 +12,6 @@ Follow along with the quick tutorial below:
   <img alt="FilePortal" src="./clientside/src/img/logo.png" height="">
 </picture>
 
-## Navigation
-
-- [Project Webpage](https://joinmastodon.org)
-
-
 ## Features
 
 ### Real-time, quick file transfer
