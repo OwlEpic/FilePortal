@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div className='home'>
-        <h1>Welcome to File Path!</h1>
+        <h1>Welcome to FilePortal!</h1>
         <p>To get started click one of the 2 options below</p>
         <div className="laptop">
             <a href="/single">
