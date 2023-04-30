@@ -7,7 +7,7 @@ const Single = () => {
   
   const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
 
-  const [fa, setFa] = useState();
+  var fa;
   var chunk = 0;
   const reader = new FileReader()
   var start = 0;
@@ -25,11 +25,8 @@ const Single = () => {
     getChunk(fil, start)
     var numberofChunks = Math.ceil(fil.size/chunkSize);
     reader.onloadend = (event) => {
-      setFa(reader.result)
-      console.log("sent 1 part of size")
-      sendData(fa)
+      sendData(reader.result)
       chunk++;
-      console.log("SET CHUNK %d", chunk)
       if(chunk < numberofChunks) {
         start += chunkSize
         getChunk(fil, start)
