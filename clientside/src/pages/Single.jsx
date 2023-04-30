@@ -1,48 +1,48 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { FileUploader } from "react-drag-drop-files";
-
-
-
-// const client = net.createConnection(serverAddress, () => {
-//   console.log('Connected to server!');
-// });
-
+import { connect, sendData } from '../Sockt.js';
 
 const Single = () => {
+  var [client, setClient] = useState();
   
-  const fileTypes = ["JPG", "PNG", "GIF"];
+  const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
 
-  const [file, setFile] = useState(null);
-  const [fa, setFa] = useState();
+  var [fil, setFile] = useState(null);
+  var [fa, setFa] = useState();
   var chunk = 0;
   const reader = new FileReader()
   var start = 0;
   const chunkSize = 65536;
+
+  
   
   
   const handleChangeFile = (file) => {
-    setFile(file);
-    getChunk(file, start)
-    var numberofChunks = Math.ceil(file.size/chunkSize);
-    //fr.readAsArrayBuffer(slice);
-    //reader.readAsArrayBuffer(file)
+    setFile(fil=file);
+  };
+
+  const sendFile = () => {
+    getChunk(fil, start)
+    var numberofChunks = Math.ceil(fil.size/chunkSize);
     reader.onloadend = (event) => {
-      setFa(prev=>prev= reader.result)
-      sendData()
+      setFa(fa=reader.result)
+      console.log("sent 1 part of size")
+      sendData(fa)
       chunk++;
       console.log("SET CHUNK %d", chunk)
       if(chunk < numberofChunks) {
-        getChunk(file, start)
+        start += chunkSize
+        getChunk(fil, start)
       }
       //console.log(fa)
     };
-  };
+  }
 
   function getChunk(file, starting) {
     var end = Math.min(starting + chunkSize , file.size);
     var slice = file.slice(starting, end);
     reader.readAsArrayBuffer(slice);
-    start = end
+    
     
     //console.log("on chunk %d out of %d", curChunk, numberofChunks)
 
@@ -59,15 +59,11 @@ const Single = () => {
     setCodes((prev)=>({...prev, code: input}))
   }
 
-  const sendFile = (e) => {
-    const bleb = new Blob([fa])
-    document.getElementById("link").href = URL.createObjectURL(bleb);
-    document.getElementById('link').click();
-  }
-
-  const sendData = () => {
+  const getFile = (e) => {
     
   }
+
+  
 
   return (
     <div className="single">
@@ -78,7 +74,9 @@ const Single = () => {
       <FileUploader handleChange={handleChangeFile} name="file" types={fileTypes} />
 
       <a id="link" href="#" download>Download</a>
-      <button onClick={sendFile}>Testing</button>
+      <button onClick={getFile}>Testing</button>
+      <button onClick={connect}>Register</button>
+      <button onClick={sendFile}>Send</button>
     </div>
   )
 }
