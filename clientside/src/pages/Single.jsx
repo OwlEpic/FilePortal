@@ -7,8 +7,7 @@ const Single = () => {
   
   const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
 
-  var [fil, setFile] = useState(null);
-  var [fa, setFa] = useState();
+  const [fa, setFa] = useState();
   var chunk = 0;
   const reader = new FileReader()
   var start = 0;
@@ -18,14 +17,15 @@ const Single = () => {
   
   
   const handleChangeFile = (file) => {
-    setFile(fil=file);
+    sendData("FILE" + file.name)
+    sendFile(file);
   };
 
-  const sendFile = () => {
+  const sendFile = (fil) => {
     getChunk(fil, start)
     var numberofChunks = Math.ceil(fil.size/chunkSize);
     reader.onloadend = (event) => {
-      setFa(fa=reader.result)
+      setFa(reader.result)
       console.log("sent 1 part of size")
       sendData(fa)
       chunk++;
@@ -62,15 +62,24 @@ const Single = () => {
     setCodes((prev)=>({...prev, code: input}))
   }
 
-  const getFile = (e) => {
-    
-  }
 
+
+  const inputRef = useRef();
+  const [updated, setUpdated] = useState("");
   const [buttonText, setButtonText] = useState('Click me');
 
   const handleClick = () => {
+    var val = inputRef.current.value
+    
     setButtonText('Button clicked!');
     setTimeout(() => setButtonText('Click me'), 1500);
+    if(val) {
+      connect(val, 1)
+    } else {
+      console.log("trying to connect")
+      const cod = Math.floor(100000 + Math.random() * 900000);
+      connect(cod, 0);
+    }
   }
 
   return (
@@ -78,8 +87,7 @@ const Single = () => {
       <div className="cont">
         <div className="wrap">
           <p>Copy and send your code to the person you want to share with!</p>
-          <input onChange={e=>setInput(e.target.value)} placeholder="waiting on code"  readOnly/>
-          
+          <input id="inpt" ref={inputRef} placeholder="waiting on code"  />
           <button className="button" onClick={handleClick}>
             {buttonText}
           </button>
@@ -91,9 +99,6 @@ const Single = () => {
               </FileUploader>
           </div>
           <a id="link" href="#" download>Download</a>
-          <button onClick={getFile}>Testing</button>
-          <button onClick={connect}>Register</button>
-          <button onClick={sendFile}>Send</button>
         </div>
       </div>
     </div>
