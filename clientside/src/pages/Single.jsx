@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useRef } from 'react'
 import { FileUploader } from "react-drag-drop-files";
 import { connect, sendData } from '../Sockt.js';
 
@@ -49,9 +49,12 @@ const Single = () => {
     
   }
 
+  const textAreaRef = useRef(null);
+
   const [input, setInput] = useState("")
 
   const [codes, setCodes] = useState({
+    empt:"",
     code:"waiting for code",
   })
 
@@ -63,20 +66,36 @@ const Single = () => {
     
   }
 
-  
+  const [buttonText, setButtonText] = useState('Click me');
+
+  const handleClick = () => {
+    setButtonText('Button clicked!');
+    setTimeout(() => setButtonText('Click me'), 1500);
+  }
 
   return (
     <div className="single">
-      <h1> sample </h1>
-      <input onChange={e=>setInput(e.target.value)} placeholder="waiting on code..." />
-      <button onClick={handleChange}> refresh </button>
-      <span>code is {codes.code}</span>
-      <FileUploader handleChange={handleChangeFile} name="file" types={fileTypes} />
-
-      <a id="link" href="#" download>Download</a>
-      <button onClick={getFile}>Testing</button>
-      <button onClick={connect}>Register</button>
-      <button onClick={sendFile}>Send</button>
+      <div className="cont">
+        <div className="wrap">
+          <p>Copy and send your code to the person you want to share with!</p>
+          <input onChange={e=>setInput(e.target.value)} placeholder="waiting on code"  readOnly/>
+          
+          <button className="button" onClick={handleClick}>
+            {buttonText}
+          </button>
+          <div className="filedrop">
+              <FileUploader handleChange={handleChangeFile} name="file" types={fileTypes}>
+              <div class="portal-frame">
+                <div class="portal"></div>
+              </div>
+              </FileUploader>
+          </div>
+          <a id="link" href="#" download>Download</a>
+          <button onClick={getFile}>Testing</button>
+          <button onClick={connect}>Register</button>
+          <button onClick={sendFile}>Send</button>
+        </div>
+      </div>
     </div>
   )
 }
