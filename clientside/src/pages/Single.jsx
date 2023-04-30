@@ -59,16 +59,16 @@ const Single = () => {
 
 
   const inputRef = useRef();
-  const [buttonText, setButtonText] = useState('Click me');
+  const [buttonText, setButtonText] = useState('Join/Start Session');
   const [col, setCol] = useState("white")
 
   const handleClick = () => {
     if(col === "white") {
       var val = inputRef.current.value
     
-      setButtonText('Button clicked!');
+      setButtonText('Use Portal!');
       console.log(col)
-      setTimeout(() => setButtonText('Click On Portal!'), 1500);
+      setTimeout(() => setButtonText('Session Started!'), 1500);
       if(val) {
         connect(val, 1)
         setCol("orange")
